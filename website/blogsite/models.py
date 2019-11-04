@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.utils import timezone
 # Create your models here.
 
 STATUS = (
@@ -13,8 +15,13 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(default=timezone.now())
+    published_date = models.DateTimeField(blank = True, null = True)
     status = models.IntegerField(choices=STATUS, default=0)
+
+    def publish(self):
+        self.published_date = timezone.now();
+        self.save();
 
     class Meta:
         ordering = ['-created_on']
