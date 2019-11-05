@@ -16,7 +16,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()
     created_on = models.DateTimeField(default=timezone.now())
-    published_date = models.DateTimeField(blank = True, null = True)
+    published_date = models.DateTimeField(default=timezone.now() , null = True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     def publish(self):

@@ -1,6 +1,18 @@
-{% extends 'blogsite/base.html '%}
+{% extends 'blogsite/base.html' %}
 
 {% block content %}
+<h5>Let the world hear your voice!!</h5>
 
 
+{% for post in posts %}
+<div>
+    
+    <h4><a href = "details/">{{post.title}}</a></h4>
+    <p>{{post.content | linebreaksbr }}</p>
+     <p>published: {{post.published_date}}</p>
+
+</div>
+
+
+{% endfor %}
 {% endblock %}
