@@ -1,27 +1,42 @@
+{% load static %}
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href  = "{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Tobi's blog</title>
 
     <style>
-        
-        .header{
 
-            background-color:dodgerblue;
-            height: 100px;
-            
+        #hdsec{
+
+            padding-bottom: 20px;
+            padding-left:10px;
+            padding-right:10px;
+         }
+
+        #cl{
+
+            color:  #020e15 ;
+
         }
+
         #htext{
            padding:20px; 
            font-family: Bradley Hand ITC;
            font-weight: bold;
         }
-    
+        #ml{
+
+             background-image: linear-gradient(to right, #fffc70, #caff8c, #95ffb2, #61ffd8, #38fffa);
+        }
+
     </style>
 </head>
 
@@ -30,20 +45,20 @@
 
     <!-- Header %% Navigation-->
     
-    <header class="nav justify-content-left header">  
-        <h1 class = "nav-item text-white rounded-pill" id="htext">Tobi's Awesome Blog</h1>
+    <header id="hdsec">
+    <nav class="navbar" id="ml">
+        <a class="navbar-brand" id="cl" >Dev Hub</a>
+    <form class="form-inline">
+        <button class="btn" type="submit"><a href="/admin">LogIn</a></button>
+     </form>
+    </nav>
     </header>
-    
 
     <div>
     {% block content %}
 
     {% endblock %}
-    
     </div>
 
-    <footer class="py-3 bg-grey">
-            <p class="m-0 text-dark text-center "><a href="admin/">Log in</a></p>
-        </footer>
 </body>
 </html>

@@ -1,18 +1,54 @@
 {% extends 'blogsite/base.html' %}
 
 {% block content %}
-<h5>Let the world hear your voice!!</h5>
+<style>
+
+    .pst{
+        padding-bottom:20px;
+    }
 
 
-{% for post in posts %}
-<div>
-    
-    <h4><a href = "details/">{{post.title}}</a></h4>
-    <p>{{post.content | linebreaksbr }}</p>
-     <p>published: {{post.published_date}}</p>
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
 
+
+
+    .tsty{
+
+        font-size:25px;
+         font-family:"Roboto", sans-serif;
+    }
+
+
+    .bsty{
+
+        font-size:12px;
+        font-family:"Roboto", sans-serif;
+    }
+
+
+
+</style>
+
+<div class = "container">
+    <div class = "row">
+    {% for post in posts %}
+        <div class ="col-sm-6">
+            <div class="card w-60">
+                  <div class="card-body">
+                    <h5 class="card-title tsty">{{post.title}}</h5>
+                    <p class="card-text bsty">{{post.content | linebreaksbr }}</p>
+                    <a href="{% url 'details' pk=post.pk%}" class="btn btn-warning">Read more</a>
+                  </div>
+            </div>
+            <br>
+        </div>
+<!--        <div class ="col-sm-2">-->
+<!--        </div>-->
+
+        {% endfor %}
+    </div>
 </div>
 
-
-{% endfor %}
 {% endblock %}
